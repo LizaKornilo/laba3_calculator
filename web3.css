@@ -1,14 +1,12 @@
 html {
     color: #ffffff;
 }
-
 body {
     color: #ffffff;
     font: 300 18px/1.6 "Source Sans Pro",sans-serif;
     margin: 0;
     text-align: center;
 }
-
 /*наше поле ввода*/
 .viewer{
     text-align: right;
@@ -23,13 +21,12 @@ body {
 }
 
 .calculator {
-border: 2px solid white;
     padding: 30px 0px 0px 9px;
     height: 450px;
     width: 220px ;
     background: #ffc202;
     background-image:
-            radial-gradient(circle farthest-side at 180px 110px, #ffc202 40%, rgb(254, 58, 132) 80%);
+            radial-gradient(circle farthest-side at 180px 110px, #f1b000 40%, rgb(254, 58, 132) 80%);
     background-attachment: fixed;
     color: white;
     font-size: 28px;
@@ -37,11 +34,10 @@ border: 2px solid white;
     width: 10em;
 }
 .num1{
-    background: rgb(255, 199, 72);
-    opacity: 50%;
+    background: rgba(255, 199, 71, 0.4);
     text-align:left;
     text-indent: 17px;
-    color: #ffffff;
+    color:  #ffffff;
     cursor: pointer;
     float: left;
     font: inherit;
@@ -51,9 +47,8 @@ border: 2px solid white;
     transition: all 0.5s;
 }
 button {
-    border: 2px;
-    background: rgb(255, 199, 71);
-    opacity: 50%;
+    border: 1px;
+    background: rgba(255, 199, 71, 0.4);
     color: #ffffff;
     cursor: pointer;
     float: left;
