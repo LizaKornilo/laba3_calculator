@@ -1,0 +1,60 @@
+html {
+    background: #ffc202;
+    background-image:
+            radial-gradient(circle farthest-side at 180px 110px, #ffc202 40%, rgb(254, 58, 132) 80%);
+    background-attachment: fixed;
+    color: #ffffff;
+}
+
+body {
+    color: #ffffff;
+    font: 300 18px/1.6 "Source Sans Pro",sans-serif;
+    margin: 0;
+    padding: 5em 0 2em;
+    text-align: center;
+}
+/*наше поле ввода*/
+.viewer{
+    text-align: right;
+    color: white;
+    float: left;
+    font-size: 34px;
+    line-height: 4em;
+    text-overflow: ellipsis;/*многоточие если не поещается текст*/
+    overflow: hidden;
+    width: 7.5em;
+    height: 3em;
+}
+.calculator {
+    font-size: 28px;
+    margin: 0 auto;
+    width: 10em;
+}
+.num1{
+    border: 0;
+    background: rgb(255, 189, 14);
+    opacity: 0.8;
+    text-align:left;
+    text-indent: 17px;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font: inherit;
+    margin: 0.25em;
+    width: 126px;
+    height: 2em;
+    transition: all 0.5s;
+}
+button {
+    border: 2px;
+    background: rgb(255, 189, 14);
+    opacity: 0.8;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font: inherit;
+    margin: 0.25em;
+    width: 2em;
+    height: 2em;
+    transition: all 0.5s;
+}
