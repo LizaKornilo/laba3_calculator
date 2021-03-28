@@ -1,8 +1,4 @@
 html {
-    background: #ffc202;
-    background-image:
-            radial-gradient(circle farthest-side at 180px 110px, #ffc202 40%, rgb(254, 58, 132) 80%);
-    background-attachment: fixed;
     color: #ffffff;
 }
 
@@ -10,9 +6,9 @@ body {
     color: #ffffff;
     font: 300 18px/1.6 "Source Sans Pro",sans-serif;
     margin: 0;
-    padding: 5em 0 2em;
     text-align: center;
 }
+
 /*наше поле ввода*/
 .viewer{
     text-align: right;
@@ -25,36 +21,45 @@ body {
     width: 7.5em;
     height: 3em;
 }
+
 .calculator {
+border: 2px solid white;
+    padding: 30px 0px 0px 9px;
+    height: 450px;
+    width: 220px ;
+    background: #ffc202;
+    background-image:
+            radial-gradient(circle farthest-side at 180px 110px, #ffc202 40%, rgb(254, 58, 132) 80%);
+    background-attachment: fixed;
+    color: white;
     font-size: 28px;
     margin: 0 auto;
     width: 10em;
 }
 .num1{
-    border: 0;
-    background: rgb(255, 189, 14);
-    opacity: 0.8;
+    background: rgb(255, 199, 72);
+    opacity: 50%;
     text-align:left;
     text-indent: 17px;
     color: #ffffff;
     cursor: pointer;
     float: left;
     font: inherit;
-    margin: 0.25em;
-    width: 126px;
-    height: 2em;
+    margin: 2px;
+    width: 130px;
+    height: 63px;
     transition: all 0.5s;
 }
 button {
     border: 2px;
-    background: rgb(255, 189, 14);
-    opacity: 0.8;
+    background: rgb(255, 199, 71);
+    opacity: 50%;
     color: #ffffff;
     cursor: pointer;
     float: left;
     font: inherit;
-    margin: 0.25em;
-    width: 2em;
-    height: 2em;
+    margin: 2px;
+    width: 63px;
+    height: 63px;
     transition: all 0.5s;
 }
