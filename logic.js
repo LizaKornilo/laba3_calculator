@@ -1,11 +1,14 @@
 var numbers = document.querySelectorAll('.number'),
     operations = document.querySelectorAll('.operation'),
     decimalBtn = document.getElementById('decimalBtn'),
-    c = document.getElementById('clear'),
-    resultBtn = document.getElementById('equals');
+    c = document.getElementById('clear');
 //questionBtn = document.getElementById('question'),
 //percentBtn = document.getElementById('percent');
-var viewer = document.getElementById('viewer');
+
+var viewer = document.getElementById('viewer'),
+    MemoryCurrentNumber = 0,
+    MemoryNewNumber = false,
+    MemoryPendingOperation = '';
 
 
 for (var i = 0; i < numbers.length; i++) {
@@ -17,7 +20,7 @@ for (var i = 0; i < numbers.length; i++) {
 
 for (var i = 0; i < operations.length; i++) {
     var operationBtn = operations[i];
-    operationBtn.addEventListener('click', function (e){
+    operationBtn.addEventListener('click', function (e) {
         operation(e.target.textContent);
     });
 }
@@ -26,23 +29,44 @@ decimalBtn.addEventListener('click', decimal);
 
 c.addEventListener('click', clear);
 
-resultBtn.addEventListener('click', result);
-
 /*questionBtn.addEventListener('click', question);
 percentBtn.addEventListener('click', percent);*/
 
-
 function numberPress(number) {
-    if(viewer.value === '0'){
+    if (MemoryNewNumber) {
         viewer.value = number;
-    }else {
-        viewer.value += number;
+        MemoryNewNumber = false;
+    } else {
+        if (viewer.value === '0') {
+            viewer.value = number;
+        } else {
+            viewer.value += number;
+        }
     }
 };
 
 function operation(op) {
+    var localOperationMemory = viewer.value;
 
-    console.log("клик по кнопке с операцией " + op);
+    if (MemoryNewNumber && MemoryPendingOperation !== '=') {
+        viewer.value = MemoryCurrentNumber;
+    } else {
+        MemoryNewNumber = true;
+        if (MemoryPendingOperation === '+') {
+            MemoryCurrentNumber += parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === '-') {
+            MemoryCurrentNumber -= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === 'х') {
+            MemoryCurrentNumber *= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === '÷') {
+            MemoryCurrentNumber /= parseFloat(localOperationMemory);
+        } else {
+            MemoryCurrentNumber = parseFloat(localOperationMemory);
+        }
+
+        viewer.value = MemoryCurrentNumber;
+        MemoryPendingOperation = op;
+    }
 };
 
 function decimal() {
@@ -52,10 +76,6 @@ function decimal() {
 function clear() {
     console.log("клик по кнопке С");
 };
-
-function result() {
-    console.log("клик по кнопке равно");
-}
 
 /*
 function question() {
