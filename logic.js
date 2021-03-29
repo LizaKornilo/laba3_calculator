@@ -5,6 +5,7 @@ var numbers = document.querySelectorAll('.number'),
     resultBtn = document.getElementById('equals');
 //questionBtn = document.getElementById('question'),
 //percentBtn = document.getElementById('percent');
+var viewer = document.getElementById('viewer');
 
 
 for (var i = 0; i < numbers.length; i++) {
@@ -32,11 +33,16 @@ percentBtn.addEventListener('click', percent);*/
 
 
 function numberPress(number) {
-    console.log("клик по кнопке с цифрой " + number);
+    if(viewer.value === '0'){
+        viewer.value = number;
+    }else {
+        viewer.value += number;
+    }
 };
 
-function operation(symbol) {
-    console.log("клик по кнопке с операцией " + symbol);
+function operation(op) {
+
+    console.log("клик по кнопке с операцией " + op);
 };
 
 function decimal() {
