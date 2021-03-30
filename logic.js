@@ -1,8 +1,8 @@
 var numbers = document.querySelectorAll('.number'),
     operations = document.querySelectorAll('.operation'),
     decimalBtn = document.getElementById('decimalBtn'),
-    c = document.getElementById('clear');
-//questionBtn = document.getElementById('question'),
+    c = document.getElementById('clear'),
+    questionBtn = document.getElementById('question');
 //percentBtn = document.getElementById('percent');
 
 var viewer = document.getElementById('viewer'),
@@ -29,8 +29,9 @@ decimalBtn.addEventListener('click', decimal);
 
 c.addEventListener('click', clear);
 
-/*questionBtn.addEventListener('click', question);
-percentBtn.addEventListener('click', percent);*/
+questionBtn.addEventListener('click', question);
+
+/*percentBtn.addEventListener('click', percent);*/
 
 function numberPress(number) {
     if (MemoryNewNumber) {
@@ -91,11 +92,11 @@ function clear() {
     MemoryPendingOperation = '';
 };
 
-/*
 function question() {
-    console.log("клик по кнопке +/-");
+    viewer.value = -viewer.value;
 }
 
+/*
 function percent() {
     console.log("клик по кнопке %");
 }*/
