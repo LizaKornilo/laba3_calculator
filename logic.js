@@ -70,17 +70,32 @@ function operation(op) {
 };
 
 function decimal() {
-    console.log("клик по кнопке с запятой");
+    var localDecimalMemory = viewer.value;
+
+    if(MemoryNewNumber){
+        localDecimalMemory = '0.';
+        MemoryNewNumber = false;
+    }else {
+        if(localDecimalMemory.indexOf('.') === -1){
+            localDecimalMemory += '.';
+        };
+    };
+
+    viewer.value = localDecimalMemory;
 };
 
 function clear() {
-    console.log("клик по кнопке С");
+    viewer.value = '0';
+    MemoryNewNumber = true;
+    MemoryCurrentNumber = 0 ;
+    MemoryPendingOperation = '';
 };
 
 /*
 function question() {
     console.log("клик по кнопке +/-");
 }
+
 function percent() {
     console.log("клик по кнопке %");
 }*/
