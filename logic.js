@@ -41,7 +41,7 @@ function numberPress(number) {
         if (viewer.value === '0') {
             viewer.value = number;
         } else {
-            viewer.value += number;
+            if (viewer.value[viewer.value.length - 1] !== '%') viewer.value += number;
         }
     }
 };
