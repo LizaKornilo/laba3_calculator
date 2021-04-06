@@ -47,7 +47,11 @@ function numberPress(number) {
 };
 
 function operation(op) {
-    var localOperationMemory = viewer.value;
+    var localOperationMemory = "";
+    for (var i = 0; i < viewer.value.length - 1; i++) {
+        localOperationMemory += viewer.value[i];
+    }
+    if (viewer.value[viewer.value.length - 1] !== '%') localOperationMemory += viewer.value[viewer.value.length - 1];
     //console.log(localOperationMemory);
     //console.log(viewer.value[viewer.value.length - 1]);
 
