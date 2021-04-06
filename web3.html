@@ -14,28 +14,41 @@
     <button id="clear" class="clear">C</button>
     <button id="question">+/-</button>
     <button id="percent">%</button>
-    <button id="div" class="operation">÷</button>
+    <button_op data-ops="div" znak="/"></button_op>
 
-    <button class="num number" data-num="7">7</button>
-    <button class="num number" data-num="8">8</button>
-    <button class="num number" data-num="9">9</button>
-    <button data-ops="times" class="ops operation">х</button>
+    <button_num value="7"></button_num>
+    <button_num value="8"></button_num>
+    <button_num value="9"></button_num>
+    <button_op data-ops="times" znak="x"></button_op>
 
-    <button class="num number" data-num="4">4</button>
-    <button class="num number" data-num="5">5</button>
-    <button class="num number" data-num="6">6</button>
-    <button data-ops="minus" class="ops operation">-</button>
+    <button_num value="4"></button_num>
+    <button_num value="5"></button_num>
+    <button_num value="6"></button_num>
+    <button_op data-ops="minus" znak="-"></button_op>
 
-    <button class="num number" data-num="1">1</button>
-    <button class="num number" data-num="2">2</button>
-    <button class="num number" data-num="3">3</button>
-    <button data-ops="plus" class="ops operation">+</button>
-    <button class="num1 number" data-num="0">0</button>
+    <button_num value="1"></button_num>
+    <button_num value="2"></button_num>
+    <button_num value="3"></button_num>
+    <button_op data-ops="plus" znak="+"></button_op>
+    <button_num value="0"></button_num>
 
     <button id="decimalBtn" class="num" data-num=",">,</button>
     <button id="equals" class="equals operation" data-result="">=</button>
 </div>
-
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.component('button_num', {
+        props: ['value'],
+        template: '<button class="num number">{{ value }}</button>'
+    })
+    Vue.component('button_op', {
+        props: ['data-op', 'znak'],
+        template: '<button class="ops operation" data-ops=data-op>{{ znak }}</button>'
+    })
+    new Vue({
+        el: "#calculator"
+    });
+</script>
 <script src="logic.js"></script>
 </body>
 </html>
