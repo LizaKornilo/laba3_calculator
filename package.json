@@ -2,12 +2,9 @@
   "name": "calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "logic.js",
+  "main": "static/logic.js",
   "scripts": {
-    "start": "index.html",
-    "build-js": "browserify logic.js",
-    "build-css": "cat web3.css",
-    "build": "firebase deploy",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +18,7 @@
   },
   "homepage": "https://github.com/LizaKornilo/laba3_calculator#readme",
   "dependencies": {
-    "cat": "^0.2.0"
+    "cat": "^0.2.0",
+    "express": "^4.17.1"
   }
 }
