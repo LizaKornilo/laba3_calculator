@@ -54,13 +54,13 @@ function operation(op) {
     if (viewer.value[viewer.value.length - 1] !== '%') localOperationMemory += viewer.value[viewer.value.length - 1];
     //console.log(localOperationMemory);
     //console.log(viewer.value[viewer.value.length - 1]);
-    MemoryNewNumber = true;
+
     if (MemoryNewNumber && MemoryPendingOperation !== '=') {
         viewer.value = MemoryCurrentNumber;
         MemoryPendingOperation = op;
         viewer.value += op;
     } else {
-
+        MemoryNewNumber = true;
         if (viewer.value[viewer.value.length - 1] === '%') {
             //console.log("!!!");
             if (MemoryPendingOperation === '+') {
