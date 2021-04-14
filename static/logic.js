@@ -4,11 +4,12 @@ var numbers = document.querySelectorAll('.number'),
     c = document.getElementById('clear'),
     questionBtn = document.getElementById('question');
     percentBtn = document.getElementById('percent');
+    historyBtn = document.getElementById('history');
 
 var viewer = document.getElementById('viewer'),
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
-    MemoryPendingOperation = '';
+    MemoryPendingOperation = '+';
 
 
 for (var i = 0; i < numbers.length; i++) {
@@ -33,6 +34,8 @@ questionBtn.addEventListener('click', question);
 
 percentBtn.addEventListener('click', percent);
 
+historyBtn.addEventListener('click', gethistory);
+
 function numberPress(number) {
     if (MemoryNewNumber) {
         viewer.value = number;
@@ -52,47 +55,53 @@ function operation(op) {
         localOperationMemory += viewer.value[i];
     }
     if (viewer.value[viewer.value.length - 1] !== '%') localOperationMemory += viewer.value[viewer.value.length - 1];
-    //console.log(localOperationMemory);
-    //console.log(viewer.value[viewer.value.length - 1]);
 
-    if (MemoryNewNumber && MemoryPendingOperation !== '=') {
-        viewer.value = MemoryCurrentNumber;
-        MemoryPendingOperation = op;
-        viewer.value += op;
-    } else {
-        MemoryNewNumber = true;
-        if (viewer.value[viewer.value.length - 1] === '%') {
-            //console.log("!!!");
-            if (MemoryPendingOperation === '+') {
-                MemoryCurrentNumber *= (1 + parseFloat(localOperationMemory) / 100);
-            } else if (MemoryPendingOperation === '-') {
-                MemoryCurrentNumber *= (1 - parseFloat(localOperationMemory) / 100);
-            } else if (MemoryPendingOperation === 'х') {
-                MemoryCurrentNumber *= (parseFloat(localOperationMemory) / 100);
-            } else if (MemoryPendingOperation === '÷') {
-                MemoryCurrentNumber /= (parseFloat(localOperationMemory) / 100);
-            } else {
-                MemoryCurrentNumber = parseFloat(localOperationMemory);
-            }
-        }
-        else {
-            if (MemoryPendingOperation === '+') {
-                MemoryCurrentNumber += parseFloat(localOperationMemory);
-            } else if (MemoryPendingOperation === '-') {
-                MemoryCurrentNumber -= parseFloat(localOperationMemory);
-            } else if (MemoryPendingOperation === 'х') {
-                MemoryCurrentNumber *= parseFloat(localOperationMemory);
-            } else if (MemoryPendingOperation === '÷') {
-                MemoryCurrentNumber /= parseFloat(localOperationMemory);
-            } else {
-                MemoryCurrentNumber = parseFloat(localOperationMemory);
-            }
-        }
+    var histroyexpr = "";
+    histroyexpr += MemoryCurrentNumber;
+    histroyexpr +=MemoryPendingOperation;
+    histroyexpr += viewer.value;
 
-        viewer.value = MemoryCurrentNumber;
-        if (op !== '=') viewer.value += op;
-        MemoryPendingOperation = op;
+    MemoryNewNumber = true;
+    if (viewer.value[viewer.value.length - 1] === '%') {
+        //console.log("!!!");
+        if (MemoryPendingOperation === '+') {
+            MemoryCurrentNumber *= (1 + parseFloat(localOperationMemory) / 100);
+        } else if (MemoryPendingOperation === '-') {
+            MemoryCurrentNumber *= (1 - parseFloat(localOperationMemory) / 100);
+        } else if (MemoryPendingOperation === 'х') {
+            MemoryCurrentNumber *= (parseFloat(localOperationMemory) / 100);
+        } else if (MemoryPendingOperation === '÷') {
+            MemoryCurrentNumber /= (parseFloat(localOperationMemory) / 100);
+        } else {
+            MemoryCurrentNumber = parseFloat(localOperationMemory);
+        }
     }
+    else {
+        if (MemoryPendingOperation === '+') {
+            MemoryCurrentNumber += parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === '-') {
+            MemoryCurrentNumber -= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === 'х') {
+            MemoryCurrentNumber *= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === '÷') {
+            MemoryCurrentNumber /= parseFloat(localOperationMemory);
+        } else {
+            MemoryCurrentNumber = parseFloat(localOperationMemory);
+        }
+    }
+
+    if (op === "=") {
+        makeJSON(histroyexpr);
+        makeJSON("=" + MemoryCurrentNumber);
+    }
+    else if (MemoryPendingOperation !== "=") {
+        makeJSON(histroyexpr);
+    }
+
+    viewer.value = MemoryCurrentNumber;
+    if (op !== '=') viewer.value += op;
+    MemoryPendingOperation = op;
+
 };
 
 function decimal() {
@@ -114,7 +123,9 @@ function clear() {
     viewer.value = '0';
     MemoryNewNumber = true;
     MemoryCurrentNumber = 0 ;
-    MemoryPendingOperation = '';
+    MemoryPendingOperation = '+';
+
+    makeJSON("Clear");
 };
 
 function question() {
@@ -124,4 +135,18 @@ function question() {
 
 function percent() {
     viewer.value += '%';
+}
+
+function gethistory() {
+    document.location = "http://localhost:8081/history";
+}
+
+function makeJSON(str) {
+    //str += " ";
+    var val = JSON.stringify({value : str});
+    var request = new XMLHttpRequest();
+    request.open("POST", "/hist", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    //console.log(val);
+    request.send(val);
 }

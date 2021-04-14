@@ -3,46 +3,49 @@ html {
 }
 body {
     color: #ffffff;
-    font: 300 18px/1.6 "Source Sans Pro",sans-serif; /*характеристики шрифта*/
-    margin: 0;
+    font: 300 18px/1.6 "Source Sans Pro",sans-serif;/*контейнер для изменения характеристик шрифта: */
+    /*насыщенность шрифта, размер шрифта/межстрочное расстояние, шрифты*/
+    margin: 0; /*отступ*/
     text-align: center;
 }
 input {
     background-color: rgba(0,0,0,0);
-    border: 0px;
+    border: 0px;/*границы вокруг элемента*/
 }
 /*наше поле ввода*/
 .viewer{
     text-align: right;
     color: white;
-    float: left;
+    float: left;/*Определяет, по какой стороне будет выравниваться элемент*/
     font-size: 34px;
-    line-height: 4em; /*межстрочный интервал*/
+    line-height: 4em;/*межстрочный интервал*/
     text-overflow: ellipsis;/*многоточие если не поещается текст*/
-    overflow: hidden; /*сокрытие элемента, если он не помещается*/
+    overflow: hidden;/*управляет отображением содержания блочного элемента, если оно
+    целиком не помещается и выходит за область заданных размеров.
+    hidden-Отображается только область внутри элемента*/
     width: 7.5em;
     height: 3em;
 }
 
 .calculator {
-    padding: 30px 0px 0px 9px;
+    padding: 30px 0px 0px 9px;/*рамка-начиная сверху*/
     height: 450px;
     width: 220px ;
     background: #ffc202;
     background-image:
             radial-gradient(circle farthest-side at 180px 110px, #f1b000 40%, rgb(254, 58, 132) 80%);
-    background-attachment: fixed; /*фиксированное положение при скроллинге*/
+    background-attachment: fixed; /*фиксирует расположение фона*/
     color: white;
     font-size: 28px;
-    margin: 0 auto;
+    margin: 0 auto;/*отступ*/
     width: 10em;
 }
 .num1{
     background: rgba(255, 199, 71, 0.4);
     text-align:left;
-    text-indent: 17px;
+    text-indent: 17px;/* величина отступа абзаца*/
     color:  #ffffff;
-    cursor: pointer;
+    cursor: pointer;/*устанавливает вид курсора при наведении в виде руки */
     float: left;
     font: inherit;
     margin: 2px;
@@ -51,14 +54,14 @@ input {
     transition: all 0.5s;
 }
 button {
-    border: 1px;
+    border: 1px;/*граница*/
     background: rgba(255, 199, 71, 0.4);
     color: #ffffff;
     cursor: pointer;
     float: left;
-    font: inherit;
+    font: inherit;/*наследование родительского класса*/
     margin: 2px;
     width: 63px;
     height: 63px;
-    transition: all 0.5s;
+    transition: all 0.5s;/*эффект перехода*/
 }
